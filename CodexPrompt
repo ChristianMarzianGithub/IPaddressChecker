@@ -1,0 +1,161 @@
+Prompt for Codex — IP Address Checker Web App
+
+PROMPT START
+
+Build a complete IP Address Checker web application.
+
+Architecture
+
+Frontend: React + TypeScript + Vite
+
+Backend: Node.js (Express) or Python (FastAPI) — choose one and implement
+
+Styling: TailwindCSS
+
+Provide Dockerfiles for both frontend and backend
+
+Provide docker-compose.yml to run locally
+
+App must be deployable on GCP Cloud Run (each service in its own container)
+
+Clean, simple folder structure
+
+App Purpose
+
+The app must detect:
+
+The user's public IP address
+
+Allow manual lookup of any IPv4 or IPv6 address
+
+For each IP, retrieve detailed metadata:
+
+IP type (IPv4/IPv6)
+
+Reverse DNS name (PTR lookup)
+
+Geo information (country, region, city)
+
+ISP / ASN
+
+Whether the IP is a data center, VPN, proxy, TOR exit node (if info available)
+
+All lookups must run on the backend, not the frontend.
+
+Frontend Requirements
+
+UI layout:
+
+“Your current IP” box (auto-loaded on page load)
+
+Input field for manual IP lookup
+
+Button: “Lookup IP”
+
+Writable history pane listing previously checked IPs (localStorage)
+
+Results panel showing:
+
+IP
+
+Version
+
+Reverse lookup name
+
+Geo data (pretty formatted)
+
+ASN / ISP
+
+Flags: VPN/Proxy/DataCenter (if available)
+
+Dark/light mode toggle
+
+Validation:
+
+Detect invalid IPs
+
+Show clear error messages
+
+Handle backend errors gracefully
+
+Backend Requirements
+
+Provide two endpoints:
+
+1. GET /ip
+
+Returns the client’s public IP
+
+Extract from:
+
+x-forwarded-for
+
+fallback to request remote address
+
+Response format:
+
+{
+  "ip": "1.2.3.4"
+}
+
+2. GET /lookup?ip=1.2.3.4
+
+Validate IPv4 or IPv6
+
+Perform:
+
+PTR reverse lookup
+
+GeoIP lookup using an appropriate library (e.g., MaxMind DB or public API)
+
+ASN / ISP info
+
+Return:
+
+{
+  "ip": "...",
+  "version": 4,
+  "reverse": "...",
+  "geo": {
+    "country": "...",
+    "region": "...",
+    "city": "..."
+  },
+  "asn": "...",
+  "isp": "...",
+  "flags": {
+    "datacenter": false,
+    "proxy": false,
+    "vpn": false
+  }
+}
+
+DevOps & Deliverables
+
+Provide:
+
+Full frontend source code
+
+Full backend source code
+
+Dockerfile for frontend
+
+Dockerfile for backend
+
+docker-compose.yml
+
+Tailwind config, Vite config, tsconfig
+
+README explaining:
+
+how to run locally
+
+how to use Docker
+
+how to deploy to Cloud Run
+
+Example API responses for IPv4 and IPv6
+
+Proper error handling everywhere
+
+PROMPT END
