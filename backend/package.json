@@ -1,0 +1,12 @@
+{
+  "name": "ipaddress-checker-backend",
+  "version": "1.0.0",
+  "description": "IP lookup backend",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "license": "MIT"
+}
